@@ -1,0 +1,19 @@
+\begin{center}
+\footnotesize
+\newcolumntype{Y}{>{\raggedleft\arraybackslash}X}
+\begin{tabularx} {14cm} {@{} l Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y@{}} \\
+\toprule
+Year&Not in Sample&In Sample&Total \\
+\midrule
+2018&4,828&1,446&6,274 \\
+2019&5,231&1,694&6,925 \\
+2020&5,883&2,104&7,987 \\
+2021&6,470&2,327&8,797 \\
+2022&4,605&1,422&6,027 \\
+Total&27,017&8,993&36,010 \\
+\bottomrule
+\addlinespace[.75ex]
+\end{tabularx}
+\par
+\normalsize
+\end{center}
