@@ -28,8 +28,8 @@ forvalue i = 2018/2022 {
 		display `i' `q'
 		
 		*** renaming variables ***
-		local vlist "AC AD AE AF AG"
-		local newnames "mainbuildingarea auxiliarybuildingarea balconyarea elevator transactionnumber"
+		local vlist "Buildingpresentsituationpatte buildingpresentsituationpatte S T AC AD AE AF AG"
+		local newnames "n_bed n_hall n_bath d_comp mainbuildingarea auxiliarybuildingarea balconyarea elevator transactionnumber"
 		local n : word count `vlist'
 		   
 		forvalues num = 1/`n' {
@@ -86,8 +86,24 @@ tabout year notinsample using "13Output/04Tables/samplenum.tex", replace ///
 	topf(13Output/04Tables/top.tex) ///
 	botf(13Output/04Tables/bot.tex) topstr(14cm)
 
+********* SECTION 3: RENAMING VARS
+	
+local vlist "Thevillagesandtownsurbandis landsectorpositionbuildingse landshiftingtotalareasquare theusezoningorcompilesandc thenonmetropolislandusedist nonmetropolislanduse transactionyearmonthandday transactionpennumber totalfloornumber mainbuildingmaterials constructiontocompletetheyea buildingshiftingtotalarea Whetherthereismanagestheorg totalpriceNTD theunitpriceNTDsquaremet theberthcategory berthshiftingtotalareasquare theberthtotalpriceNTD thenote mainbuildingarea auxiliarybuildingarea balconyarea elevator transactionnumber"
+local newnames "town address land_area urb_zoning nurb_zoning nurb_land date object_num story material completion_date building_area d_manager price unitprice parking_cat parking_area parking_price note main_area aux_area balcony_area d_elevator trans_num"
+local n : word count `vlist'
+   
+forvalues num = 1/`n' {
+	local var : word `num' of `vlist'
+	local new : word `num' of `newnames'
+	capture confirm variable `var'
+	if !_rc {
+		rename `var' `new'
+	}
+}
+	
 *** Saving sample
 
 keep if insample
+drop insample notinsample mainuse transactionsign shiftinglevel buildingstate parking*
 save "11Input/02DataProcessed/sample", replace
 outsheet using "11Input/02DataProcessed/sample.csv", replace comma nol
