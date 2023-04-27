@@ -1,0 +1,24 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\toprule
+                &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         \\
+\midrule
+inter11         &   -0.012\sym{***}&   -0.010\sym{***}&   -0.001         &   -0.001         \\
+                &  (0.004)         &  (0.004)         &  (0.003)         &  (0.003)         \\
+\addlinespace
+closest\_dist    &   -0.038\sym{***}&   -0.040\sym{***}&   -0.041\sym{***}&   -0.041\sym{***}\\
+                &  (0.002)         &  (0.002)         &  (0.002)         &  (0.002)         \\
+\addlinespace
+post1           &    0.188\sym{***}&    0.222\sym{***}&    0.118\sym{***}&    0.132\sym{***}\\
+                &  (0.023)         &  (0.022)         &  (0.018)         &  (0.017)         \\
+\addlinespace
+Constant        &   15.991\sym{***}&   15.986\sym{***}&   15.398\sym{***}&   15.349\sym{***}\\
+                &  (0.015)         &  (0.015)         &  (0.082)         &  (0.082)         \\
+\midrule
+Observations    &     8761         &     8761         &     7759         &     7759         \\
+Contractual     &       No         &      Yes         &       No         &      Yes         \\
+Structual       &       No         &       No         &      Yes         &      Yes         \\
+\bottomrule
+\end{tabular}
+}

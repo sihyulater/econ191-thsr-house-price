@@ -1,0 +1,24 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\toprule
+                &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         \\
+\midrule
+inter2km        &    0.062         &    0.104\sym{**} &   -0.025         &   -0.003         \\
+                &  (0.053)         &  (0.052)         &  (0.039)         &  (0.038)         \\
+\addlinespace
+treat2km        &    0.140\sym{***}&    0.177\sym{***}&    0.275\sym{***}&    0.271\sym{***}\\
+                &  (0.017)         &  (0.017)         &  (0.013)         &  (0.013)         \\
+\addlinespace
+post1           &    0.129\sym{***}&    0.175\sym{***}&    0.107\sym{***}&    0.126\sym{***}\\
+                &  (0.013)         &  (0.013)         &  (0.009)         &  (0.009)         \\
+\addlinespace
+Constant        &   15.755\sym{***}&   15.735\sym{***}&   15.042\sym{***}&   14.988\sym{***}\\
+                &  (0.009)         &  (0.009)         &  (0.050)         &  (0.050)         \\
+\midrule
+Observations    &     8761         &     8761         &     7759         &     7759         \\
+Contractual     &       No         &      Yes         &       No         &      Yes         \\
+Structual       &       No         &       No         &      Yes         &      Yes         \\
+\bottomrule
+\end{tabular}
+}
