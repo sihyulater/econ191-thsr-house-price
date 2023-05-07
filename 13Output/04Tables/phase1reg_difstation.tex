@@ -1,0 +1,26 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{12}{c}}
+\toprule
+                &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         &\multicolumn{1}{c}{(6)}         &\multicolumn{1}{c}{(7)}         &\multicolumn{1}{c}{(8)}         &\multicolumn{1}{c}{(9)}         &\multicolumn{1}{c}{(10)}         &\multicolumn{1}{c}{(11)}         &\multicolumn{1}{c}{(12)}         \\
+\midrule
+$ Dist\_winner \times Post$&  -0.0050\sym{*}  &  -0.0002         &  -0.0002         &                  &                  &                  &                  &                  &                  &                  &                  &                  \\
+                & (0.0029)         & (0.0022)         & (0.0022)         &                  &                  &                  &                  &                  &                  &                  &                  &                  \\
+\addlinespace
+$ Dist\_Yilan \times Post$&                  &                  &                  &  -0.0078\sym{***}&  -0.0027\sym{*}  &  -0.0018         &                  &                  &                  &                  &                  &                  \\
+                &                  &                  &                  & (0.0022)         & (0.0015)         & (0.0015)         &                  &                  &                  &                  &                  &                  \\
+\addlinespace
+$ Dist\_Sicheng \times Post$&                  &                  &                  &                  &                  &                  &  -0.0075\sym{***}&  -0.0029\sym{**} &  -0.0020         &                  &                  &                  \\
+                &                  &                  &                  &                  &                  &                  & (0.0020)         & (0.0014)         & (0.0014)         &                  &                  &                  \\
+\addlinespace
+$ Dist\_Luodong \times Post$&                  &                  &                  &                  &                  &                  &                  &                  &                  &   0.0086\sym{***}&   0.0079\sym{***}&   0.0045\sym{**} \\
+                &                  &                  &                  &                  &                  &                  &                  &                  &                  & (0.0025)         & (0.0019)         & (0.0018)         \\
+\addlinespace
+ln\_building\_area&                  &   0.8928\sym{***}&                  &                  &   0.9106\sym{***}&                  &                  &   0.9156\sym{***}&                  &                  &   0.9103\sym{***}&                  \\
+                &                  & (0.0165)         &                  &                  & (0.0166)         &                  &                  & (0.0168)         &                  &                  & (0.0170)         &                  \\
+\midrule
+Observations    &     9126         &     9126         &     8114         &     9126         &     9126         &     8114         &     9126         &     9126         &     8114         &     9126         &     9126         &     8114         \\
+Structural controls&       No         &       No         &      Yes         &       No         &       No         &      Yes         &       No         &       No         &      Yes         &       No         &       No         &      Yes         \\
+\bottomrule
+\end{tabular}
+}

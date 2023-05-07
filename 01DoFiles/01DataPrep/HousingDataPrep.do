@@ -61,6 +61,25 @@ forvalue i = 2018/2022 {
 
 }
 
+*** Adding in 2023 Q1
+import excel "11Input/01DataRaw/2023-q1/g_lvr_land_a.xls", clear ///
+sheet("不動產買賣") cellrange(A2) firstrow
+
+local vlist "Buildingpresentsituationpatte buildingpresentsituationpatte S T AC AD AE AF AG"
+local newnames "n_bed n_hall n_bath d_comp mainbuildingarea auxiliarybuildingarea balconyarea elevator transactionnumber"
+local n : word count `vlist'
+   
+forvalues num = 1/`n' {
+	local var : word `num' of `vlist'
+	local new : word `num' of `newnames'
+	capture confirm variable `var'
+	if !_rc {
+		rename `var' `new'
+	}
+}
+append using `y2022'
+
+
 *** Parsing transaction year and month
 destring transactionyearmonthandday, replace
 gen year = floor(transactionyearmonthandday / 10000)
