@@ -23,11 +23,14 @@ use "11Input/02DataProcessed/foranalysis.dta", clear
 
 global stations 四城 宜蘭 縣政中心 羅東
 
+gen ln_building_area = log(building_area)
+gen ln_land_area = log(land_area)
+
 global depend ln_price
 global distance dist_to四城 dist_to宜蘭 dist_to縣政中心 dist_to羅東
 global zone zone1 zone2 zone3 zone4 zone5
 global discrete within1km_四城 within1km_宜蘭 within1km_縣政中心 within1km_羅東
-global struc building_area land_area percent_balcony percent_aux age n_bed n_hall n_bath n_story d_urban d_comp d_manager  d_hotspring d_leak d_reno material*
+global struc ln_building_area ln_land_area percent_balcony percent_aux age n_bed n_hall n_bath n_story d_urban d_comp d_manager  d_hotspring d_leak d_reno
 global contr d_spec_rel d_presale d_notreg
 
 
@@ -221,7 +224,7 @@ tab insample2km regspec2
 
 gen insample2p5km = 0
 foreach s in $stations {
-	replace insample2p5km = 1 if dist_to`s' < 2.5
+	replace insample2p5km = 1 if dist_to`s' <= 2.5
 }
 
 eststo: reg ln_price $inter_zone_full $zone_full treat post2 if insample2p5km & regspec2
@@ -260,7 +263,7 @@ foreach s in $stations{
 
 gen treat23 = within2km_縣政中心
 gen inter23 = treat23 * post2
-lab var inter23 "$ Dist \times Post2$"
+lab var inter23 "$ Within 2km \times Post2$"
 
 est clear
 eststo: reg ln_price inter23 treat23 post2 if regspec2 & insample2km

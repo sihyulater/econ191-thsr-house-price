@@ -1,26 +1,25 @@
-{
-\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{12}{c}}
-\toprule
-                &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         &\multicolumn{1}{c}{(6)}         &\multicolumn{1}{c}{(7)}         &\multicolumn{1}{c}{(8)}         &\multicolumn{1}{c}{(9)}         &\multicolumn{1}{c}{(10)}         &\multicolumn{1}{c}{(11)}         &\multicolumn{1}{c}{(12)}         \\
+                &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         \\
 \midrule
-$ Dist\_winner \times Post$&  -0.0050\sym{*}  &  -0.0002         &  -0.0002         &                  &                  &                  &                  &                  &                  &                  &                  &                  \\
-                & (0.0029)         & (0.0022)         & (0.0022)         &                  &                  &                  &                  &                  &                  &                  &                  &                  \\
+\emph{Winner: County Government}&                  &                  &                  &                  \\
 \addlinespace
-$ Dist\_Yilan \times Post$&                  &                  &                  &  -0.0078\sym{***}&  -0.0027\sym{*}  &  -0.0018         &                  &                  &                  &                  &                  &                  \\
-                &                  &                  &                  & (0.0022)         & (0.0015)         & (0.0015)         &                  &                  &                  &                  &                  &                  \\
+$ Dist \times Post1$&  -0.0050\sym{*}  &  -0.0031         &  -0.0010         &  -0.0002         \\
+                & (0.0029)         & (0.0028)         & (0.0020)         & (0.0019)         \\
 \addlinespace
-$ Dist\_Sicheng \times Post$&                  &                  &                  &                  &                  &                  &  -0.0075\sym{***}&  -0.0029\sym{**} &  -0.0020         &                  &                  &                  \\
-                &                  &                  &                  &                  &                  &                  & (0.0020)         & (0.0014)         & (0.0014)         &                  &                  &                  \\
+\emph{Runner-up 1: Sicheng}&                  &                  &                  &                  \\
 \addlinespace
-$ Dist\_Luodong \times Post$&                  &                  &                  &                  &                  &                  &                  &                  &                  &   0.0086\sym{***}&   0.0079\sym{***}&   0.0045\sym{**} \\
-                &                  &                  &                  &                  &                  &                  &                  &                  &                  & (0.0025)         & (0.0019)         & (0.0018)         \\
+$ Dist \times Post1$&  -0.0075\sym{***}&  -0.0066\sym{***}&  -0.0023\sym{*}  &  -0.0021\sym{*}  \\
+                & (0.0020)         & (0.0019)         & (0.0012)         & (0.0012)         \\
 \addlinespace
-ln\_building\_area&                  &   0.8928\sym{***}&                  &                  &   0.9106\sym{***}&                  &                  &   0.9156\sym{***}&                  &                  &   0.9103\sym{***}&                  \\
-                &                  & (0.0165)         &                  &                  & (0.0166)         &                  &                  & (0.0168)         &                  &                  & (0.0170)         &                  \\
-\midrule
-Observations    &     9126         &     9126         &     8114         &     9126         &     9126         &     8114         &     9126         &     9126         &     8114         &     9126         &     9126         &     8114         \\
-Structural controls&       No         &       No         &      Yes         &       No         &       No         &      Yes         &       No         &       No         &      Yes         &       No         &       No         &      Yes         \\
-\bottomrule
-\end{tabular}
-}
+\emph{Runner-up 2: Yilan City}&                  &                  &                  &                  \\
+\addlinespace
+$ Dist \times Post1$&  -0.0078\sym{***}&  -0.0068\sym{***}&  -0.0027\sym{**} &  -0.0024\sym{*}  \\
+                & (0.0022)         & (0.0021)         & (0.0013)         & (0.0013)         \\
+\addlinespace
+\emph{Runner-up 3: Luodong}&                  &                  &                  &                  \\
+\addlinespace
+$ Dist \times Post1$&   0.0086\sym{***}&   0.0096\sym{***}&   0.0062\sym{***}&   0.0067\sym{***}\\
+                & (0.0025)         & (0.0024)         & (0.0017)         & (0.0017)         \\
+\addlinespace
+\midrule Contractual controls&       No         &      Yes         &       No         &      Yes         \\
+Structural controls&       No         &       No         &      Yes         &      Yes         \\
+Observations    &     9126         &     9126         &     8865         &     8865         \\

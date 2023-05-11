@@ -99,7 +99,7 @@ twoway  (line unitprice_us quarter if tgroup == 0, lp(solid)) ///
 		tline(2021q1) tline(2021q4) ///
 		legend(order(2 "Within 2km to winner" 3 "Within 2km to runner-ups" 1 "Controls")) ///
 		xtitle("") ///
-		ytitle("Price($) per unit")
+		ytitle("$ per square meter")
 graph export "13Output/03Graphs/price_time.png", replace
 
 *** showing change rate ***
@@ -121,7 +121,25 @@ graph export "13Output/03Graphs/price_change.png", replace
 
 restore
 
-********* SECTION 6: DISTANCE
+********* SECTION 6: AGE AND TIME
 
-// twoway scatter unitprice
+preserve
+collapse (mean) age building_area, by(tgroup quarter)
+
+twoway  (line age quarter if tgroup == 0, lp(solid)) ///
+		(line age quarter if tgroup == 1, lp(dash)) ///
+		(line age quarter if tgroup == 2, lp(shortdash)), ///
+		tline(2021q1) tline(2021q4) ///
+		legend(order(2 "Within 2km to winner" 3 "Within 2km to runner-ups" 1 "Controls")) ///
+		xtitle("") ///
+		ytitle("Age")
+		
+twoway  (line building_area quarter if tgroup == 0, lp(solid)) ///
+		(line building_area quarter if tgroup == 1, lp(dash)) ///
+		(line building_area quarter if tgroup == 2, lp(shortdash)), ///
+		tline(2021q1) tline(2021q4) ///
+		legend(order(2 "Within 2km to winner" 3 "Within 2km to runner-ups" 1 "Controls")) ///
+		xtitle("") ///
+		ytitle("Area")
+
 

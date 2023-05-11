@@ -151,10 +151,10 @@ label var within1km_羅東 "Within 1km to runner-up 3"
 
 label var d_urban "Is urban"
 
-label var building_area "Total floor area"
-label var land_area "Total lot area"
+label var building_area "Total floor area ($ m^2 $)"
+label var land_area "Total lot area ($ m^2 $)"
 label var percent_balcony "\% floor area as balcony"
-label var percent_aux "\% floor area as auxiliary building"
+label var percent_aux "\% floor area as auxiliary"
 label var age "Age"
 label var n_bed "\# bedrooms"
 label var n_hall "\# living rooms"
@@ -164,7 +164,7 @@ label var d_comp "Has compartment"
 label var d_manager "Has manager"
 label var d_hotspring "Has hotspring"
 label var d_leak "Is leaking"
-label var d_reno "Including renovation fee"
+label var d_reno "Includes renovation fee"
 label var material1 "Material" 
 
 label var d_spec_rel "Is family transaction"
@@ -177,7 +177,9 @@ foreach x of varlist $depend $locational $struc $contr {
   lab var `x' "`t'"
 }
 
+*** summary statitics - total with detail
 
+est clear
 estpost su $depend $locational $struc $contr, detail
 est store A
 
@@ -187,7 +189,43 @@ esttab A using "13Output/04Tables/sumtable.tex", replace ///
 	refcat(ln_price "\emph{Dependent variable}" dist_to縣政中心 "\vspace{0.1em} \\ \emph{Locational}" building_area "\vspace{0.1em} \\ \emph{Structural}" d_spec_rel "\vspace{0.1em} \\ \emph{Contractual}", nolabel) ///
 	nostar unstack nomtitle booktabs nonum noobs label f gaps
 
+*** summary statistics - groups
+
+global struc1 building_area land_area percent_balcony percent_aux age n_bed n_hall n_bath n_story
+global struc2 d_comp d_manager d_hotspring d_leak d_reno
 
 
+gen insample2km = ((within2km_四城 == 1) | (within2km_宜蘭 == 1) | (within2km_縣政中心 == 1) | (within2km_羅東 == 1))
+gen tgroup = 0
+replace tgroup = 1 if (within2km_縣政中心 == 1)
+replace tgroup = 2 if (insample2km == 1) & (within2km_縣政中心 == 0)
 
+est clear
+eststo grp1: estpost summ $depend $struc1
+eststo grp2: estpost summ $depend $struc1 if tgroup == 1
+eststo grp3: estpost summ $depend $struc1 if tgroup == 2
+eststo grp4: estpost summ $depend $struc1 if tgroup == 0
+esttab grp* using "13Output/04Tables/sumtable_groups.tex", replace ///
+	refcat(ln_price "\emph{Dependent Variable}" building_area "\emph{Structural}", nolabel) ///
+	main(mean %8.3fc) aux(sd %8.3fc) nostar unstack nonumber ///
+	nonote noobs label booktabs ///
+	mtitle("All" "< 2 km to winner" "< 2 km to runner-ups" "Control") ///
+	collabels(none) ///
+	f gaps
+
+est clear
+eststo grp1: estpost summ $struc2 $contr
+eststo grp2: estpost summ $struc2 $contr if tgroup == 1
+eststo grp3: estpost summ $struc2 $contr if tgroup == 2
+eststo grp4: estpost summ $struc2 $contr if tgroup == 0
+ereturn list
+esttab grp* using "13Output/04Tables/sumtable_groups.tex", append ///
+	refcat(d_spec_rel "\emph{Contractual}", nolabel) ///
+	cells(mean(fmt(3))) nostar unstack nonumber ///
+	nomtitle nonote noobs label booktabs ///
+	eqlabels(none) ///
+	collabels(none) ///
+	stats(N, fmt(%18.0g) labels("\midrule Observations")) ///
+	f gaps plain
+	
 
