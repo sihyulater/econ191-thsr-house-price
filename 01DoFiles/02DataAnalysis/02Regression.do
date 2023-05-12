@@ -195,6 +195,7 @@ esttab using "13Output/04Tables/phase2-spec1.tex", replace  ///
 gen treat = (dist_to縣政中心 < 2.5)
 forvalue i = 1/5{
 	gen inter_zone`i' = post2*zone`i'*treat
+	lab var inter_zone`i' `"Zone `i' inter."'
 }
 
 * full sample
